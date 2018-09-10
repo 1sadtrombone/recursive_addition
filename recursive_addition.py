@@ -6,7 +6,8 @@ c = [0] #carry
 def add(R, c):
 	i = len(R) #operating on this row. 
 	if i == len(A):
-		R.append(c[i]) #make sure we get any carries from the last run
+		if c[i] > 0:
+			R.append(c[i]) #make sure we get any carries from the last run
 		return R #finally return value 
 	else:
 		R.append((A[i]+B[i]+c[i])%10) #next digit 
@@ -15,12 +16,8 @@ def add(R, c):
 
 #padding numbers if unequal number of digits
 if len(A) < len(B): 
-	A = list(reversed(A)) #need to pad from left, but lists add to the right
-	A += [0] * (len(B) - len(A)) #add a number of 0s equal to the discrepancy in lengths
-	A = list(reversed(A)) #put it back in usable order
-elif len(B) < len(B):
-	B = list(reversed(B))
+	A += [0] * (len(B) - len(A)) #add a number of 0s equal to the discrepancy in lengths (adds to the right, ie doesn't change value)
+elif len(B) < len(A):
 	B += [0] * (len(A) - len(B))
-	B = list(reversed(B))
 
 print list(reversed(add(R, c))) #prints result in forward order
