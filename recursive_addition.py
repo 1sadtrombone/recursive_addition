@@ -2,7 +2,7 @@ def add(A, B, R = [], c = 0): #args, result, carry
 	i = len(R) #operating on this row. 
 	
 	if i == 0: #1st run
-	#padding numbers if unequal numbers 
+	#padding numbers if unequal numbers of digits
 		if len(A) < len(B): 
 			A += [0] * (len(B) - len(A)) #add a number of 0s equal to the discrepancy in lengths (adds to the right, ie doesn't change value)
 		elif len(B) < len(A):
